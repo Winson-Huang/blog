@@ -1,6 +1,27 @@
 spring:
-    profiles:
-        include: secret
+  profiles:
+    include: secret
 
-    datasource:
-        url: jdbc:mysql://localhost/BLOG?useSSL=false
+  data:
+    rest:
+      base-path: /api/data
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      # ddl-auto: none
+      naming: 
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    defer-datasource-initialization: true
+
+  datasource:
+    url: jdbc:mysql://localhost/BLOG?useSSL=false
+
+  sql:
+    init:
+      mode: always
+      # schema-locations:
+      #   - classpath:
+      data-locations:
+        - classpath:BlogUser-data.sql
