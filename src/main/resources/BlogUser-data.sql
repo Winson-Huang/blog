@@ -2,7 +2,7 @@
 
 DELETE FROM BlogUser;
 
-INSERT INTO BlogUser (name) VALUES
-    ("SpongeBob"),
-    ("PatrickStar"),
-    ("Squidward");
+-- INSERT INTO BlogUser 
+--     (username, password, fullname) VALUES
+--     ("SpongeBob", "password", "SpongeBob"),
+--     ("PatrickStar", "password", "PatrickStar");

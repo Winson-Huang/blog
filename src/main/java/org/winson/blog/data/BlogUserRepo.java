@@ -5,4 +5,5 @@ import org.winson.blog.BlogUser;
 
 public interface BlogUserRepo extends JpaRepository<BlogUser, Long> {
     
+    BlogUser getByUsername(String username);
 }

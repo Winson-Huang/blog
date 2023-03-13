@@ -16,7 +16,7 @@ spring:
     defer-datasource-initialization: true
 
   datasource:
-    url: jdbc:mysql://localhost/BLOG?useSSL=false
+    url: jdbc:mysql://localhost/BLOG?useSSL=false&allowPublicKeyRetrieval=true
 
   sql:
     init:
