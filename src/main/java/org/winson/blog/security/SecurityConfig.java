@@ -13,8 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-    public static final String AUTHORITY_ROLE_PREFIX = "ROLE_";
-    public static final String AUTHORITY_ROLE = "USER";
+    public static final String ROLE_PREFIX = "ROLE_";
+    public static final String USER_ROLE = "USER";
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -25,30 +25,31 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(
         AuthenticationConfiguration authConfig
     ) throws Exception {
+        // this method will get UserDetails Bean and PasswordEncoder Bean 
+        // automatically and config with them.
         return authConfig.getAuthenticationManager();
     }
 
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // http
-        //     .authorizeRequests()
-        //         .antMatchers("/api/**")
-        //         .hasRole(AUTHORITY_ROLE)
-        //         .antMatchers("/**")
-        //         .permitAll()
-            
-        //     .and()
-        //     .logout()
-
-        //     ;
         http
-            .authorizeRequests()
-            .antMatchers("/", "/**")
-            .permitAll()
+            .formLogin(Customizer.withDefaults())
+                .authorizeRequests()
+                .antMatchers("/api/**")
+                .hasRole(USER_ROLE)
+                .antMatchers("/**")
+                .permitAll()
             
             .and()
-            .formLogin(Customizer.withDefaults())
+            .logout()
+                .logoutSuccessUrl("/login")
+
+            .and()
+            .csrf()
+                .disable()
+            
+            // 
             ;
 
         return http.build();

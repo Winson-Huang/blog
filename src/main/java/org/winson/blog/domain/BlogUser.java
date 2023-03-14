@@ -1,4 +1,4 @@
-package org.winson.blog;
+package org.winson.blog.domain;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -44,7 +44,7 @@ public class BlogUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority(
-            SecurityConfig.AUTHORITY_ROLE_PREFIX + SecurityConfig.AUTHORITY_ROLE
+            SecurityConfig.ROLE_PREFIX + SecurityConfig.USER_ROLE
         ));
     }
 
