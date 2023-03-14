@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.winson.blog.security.SecurityConfig;
+import org.winson.blog.security.BlogSecurityConfig;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -44,7 +44,7 @@ public class BlogUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority(
-            SecurityConfig.ROLE_PREFIX + SecurityConfig.USER_ROLE
+            BlogSecurityConfig.ROLE_PREFIX + BlogSecurityConfig.USER_ROLE
         ));
     }
 

@@ -39,13 +39,13 @@ public class Register {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
-        JSONObject userjson = new JSONObject();
-        userjson.put("username", username);
-        userjson.put("password", password);
-        userjson.put("fullname", fullname);
+        JSONObject userFormJson = new JSONObject();
+        userFormJson.put("username", username);
+        userFormJson.put("password", password);
+        userFormJson.put("fullname", fullname);
 
         HttpEntity<String> request = 
-        new HttpEntity<String>(userjson.toString(), headers);
+        new HttpEntity<String>(userFormJson.toString(), headers);
 
         // BlogUserForm form = new BlogUserForm(username, password, fullname);
         // HttpEntity<BlogUserForm> request = new HttpEntity<>(form);
